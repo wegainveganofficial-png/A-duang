@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="A ดวง เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน">
+<meta property="og:title" content="A ดวง">
+<meta property="og:description" content="เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน ใน 1 นาที">
+<title>A ดวง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one centered column — header sticker logo, 3 card slots, a scattered deck, then the reading. Candy-night palette. */
+:root{
+  --bg:#FFF0F6; --surface:#FFFFFF; --ink:#3A1D4D; --muted:#86699A; --line:#F2C6DB;
+  --pink:#FF4F9A; --pink-soft:#FFD9EA; --mint:#1FB892; --butter:#FFC93C; --shadow:#3A1D4D;
+  --dot:rgba(255,79,154,.14);
+  --f-display:"Itim","Mali",system-ui,sans-serif;
+  --f-body:"Mali","Itim",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1C1027; --surface:#2A1A39; --ink:#FCEBF4; --muted:#BFA3D1; --line:#46305C;
+  --pink:#FF77B3; --pink-soft:#4A2548; --mint:#5EE3C1; --butter:#FFD76A; --shadow:#0C0612;
+  --dot:rgba(255,119,179,.12); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1C1027; --surface:#2A1A39; --ink:#FCEBF4; --muted:#BFA3D1; --line:#46305C;
+  --pink:#FF77B3; --pink-soft:#4A2548; --mint:#5EE3C1; --butter:#FFD76A; --shadow:#0C0612;
+  --dot:rgba(255,119,179,.12); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;
+  background-image:radial-gradient(var(--dot) 1.6px,transparent 2px);background-size:22px 22px}
+.wrap{max-width:960px;margin:0 auto;padding-inline:16px;padding-block:28px 48px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:10px}
+
+/* header */
+.top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.logo{margin:0;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:400;font-size:clamp(56px,13vw,96px);line-height:1;letter-spacing:.01em}
+.logo .a{display:grid;place-items:center;width:1.05em;height:1.05em;border-radius:38% 62% 55% 45%/50% 42% 58% 50%;background:var(--pink);color:#fff;border:3px solid var(--ink);box-shadow:4px 5px 0 var(--shadow);transform:rotate(-8deg);font-size:.8em}
+.logo .d{position:relative}
+.logo .d svg{position:absolute;right:-.42em;top:-.12em;width:.42em;height:.42em}
+.tag{margin:0;font-size:clamp(16px,3.6vw,19px);font-weight:600;max-width:32ch;text-wrap:balance}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border-radius:999px;background:var(--surface);border:2px solid var(--ink);font-size:14px;font-weight:600}
+.sw{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);flex:none}
+
+/* steps */
+.steps{list-style:none;margin:26px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;font-size:14px;color:var(--muted);font-weight:600}
+.steps li{display:flex;align-items:center;gap:6px}
+.steps b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--butter);color:#3A1D4D;border:2px solid var(--ink);font-size:12px}
+.steps li.on{color:var(--ink)}
+.steps li.on b{background:var(--pink);color:#fff}
+
+/* slots */
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,3vw,26px);max-width:560px;margin:22px auto 0}
+.slot{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.slot-label{font-family:var(--f-display);font-size:clamp(15px,3.6vw,19px);line-height:1.2;text-align:center}
+.slot-label small{display:block;font-family:var(--f-body);font-size:12px;color:var(--muted)}
+.slot-box{position:relative;width:100%;aspect-ratio:5/8;border-radius:14px;border:2.5px dashed var(--line);display:grid;place-items:center;background:color-mix(in srgb,var(--surface) 55%,transparent)}
+.slot-box .n{font-family:var(--f-display);font-size:34px;color:var(--line)}
+.slot.next .slot-box{border-color:var(--pink);animation:pulse 1.6s ease-in-out infinite}
+.slot.next .slot-box .n{color:var(--pink)}
+@keyframes pulse{50%{transform:scale(1.03)}}
+.slot.filled .slot-box{border:none;background:none}
+
+/* 3D card */
+.c3d{position:absolute;inset:0;perspective:900px}
+.c3d .inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.35,.5,1)}
+.c3d.flipped .inner{transform:rotateY(180deg)}
+.c3d.instant .inner{transition:none}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px}
+.face.front{transform:rotateY(180deg)}
+
+/* card back (a physical object: fixed colours) */
+.back-art{border-radius:12px;border:2.5px solid #3A1D4D;box-shadow:inset 0 0 0 3px #fff,3px 4px 0 var(--shadow);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='16' fill='%23FFF' stroke='%233A1D4D' stroke-width='2'/%3E%3Cpath d='M23 9a11 11 0 1 0 8 17a9 9 0 1 1-8-17z' fill='%23FFD35C' stroke='%233A1D4D' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") center/58% no-repeat,
+  radial-gradient(circle,#FFC6E0 1.4px,transparent 1.9px) 0 0/9px 9px,#FF6FAE}
+
+/* card front */
+.cf{container-type:inline-size;position:absolute;inset:0;border-radius:14px;border:2.5px solid #3A1D4D;background:var(--cbg);color:#3A1D4D;box-shadow:3px 4px 0 var(--shadow);display:flex;flex-direction:column;align-items:center;padding:7% 7% 8%;overflow:hidden}
+.cf::before{content:"";position:absolute;inset:5px;border:1.5px solid rgba(58,29,77,.25);border-radius:9px;pointer-events:none}
+.cf-num{font-family:var(--f-display);font-size:11cqw;line-height:1.2}
+.cf svg{width:100%;flex:1;min-height:0}
+.cf-name{font-family:var(--f-display);font-size:13cqw;line-height:1.15;text-align:center}
+.cf-en{font-size:7.5cqw;letter-spacing:.06em;text-transform:uppercase;opacity:.7;line-height:1.3}
+
+/* actions */
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+.btn{border:2.5px solid var(--ink);border-radius:999px;padding:10px 26px;font-weight:700;font-size:16px;background:var(--surface);box-shadow:3px 4px 0 var(--shadow);transition:transform .15s,box-shadow .15s}
+.btn:hover:not(:disabled){transform:translate(-1px,-2px);box-shadow:4px 6px 0 var(--shadow)}
+.btn:active:not(:disabled){transform:translate(2px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.btn.primary{background:var(--pink);color:#fff}
+.btn.mint{background:var(--mint);color:#1B0F24}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.hint{text-align:center;margin:14px 0 0;font-weight:600;color:var(--muted);min-height:1.65em}
+
+/* deck */
+.deck-wrap{margin-top:18px;padding:18px;border-radius:24px;background:var(--surface);border:2.5px solid var(--ink);box-shadow:5px 6px 0 var(--shadow)}
+.deck-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.deck-head h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:22px}
+.deck-head p{margin:0;font-size:13px;color:var(--muted)}
+.deck{display:grid;grid-template-columns:repeat(11,1fr);gap:10px 8px}
+.dc{aspect-ratio:5/8;padding:0;transform:rotate(var(--r,0deg));transition:transform .2s cubic-bezier(.3,1.6,.5,1),opacity .3s}
+.dc:hover{transform:translateY(-8px) rotate(calc(var(--r,0deg) * -1.5))}
+.dc.taken{visibility:hidden}
+.deck.full .dc{opacity:.35;pointer-events:none}
+.btn.small{padding:6px 18px;font-size:14px}
+.fly{position:fixed;z-index:50;transform-origin:0 0;pointer-events:none;margin:0}
+
+/* results */
+#results{margin-top:34px}
+.sum{position:relative;padding:22px;border-radius:24px;background:var(--pink-soft);border:2.5px solid var(--ink);box-shadow:5px 6px 0 var(--shadow);display:grid;grid-template-columns:1.3fr 1fr;gap:18px 26px}
+.sum h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(26px,5.5vw,34px);line-height:1.2;text-wrap:balance}
+.eyebrow{margin:0 0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.meter{height:16px;border-radius:999px;border:2.5px solid var(--ink);background:var(--surface);overflow:hidden;margin:12px 0 6px}
+.meter i{display:block;height:100%;background:repeating-linear-gradient(-45deg,var(--pink) 0 8px,color-mix(in srgb,var(--pink) 78%,#fff) 8px 16px);border-right:2.5px solid var(--ink);transition:width 1.2s cubic-bezier(.3,1,.4,1)}
+.meter-txt{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.tip{margin:14px 0 0;font-size:17px;font-weight:600}
+.hot{display:inline-block;margin:12px 0 0;padding:3px 12px;border-radius:999px;background:var(--surface);border:2px solid var(--ink);font-size:14px;font-weight:600}
+.lucky{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.lk{background:var(--surface);border:2px solid var(--ink);border-radius:16px;padding:12px 14px}
+.lk .eyebrow{margin-bottom:2px}
+.lk strong{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.3}
+.lk .big{font-size:34px;font-variant-numeric:tabular-nums}
+.lk.wide{grid-column:1/-1}
+.sum-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}
+
+.reads{display:grid;gap:16px;margin-top:22px}
+.rd{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;padding:18px;border-radius:22px;background:var(--surface);border:2.5px solid var(--ink)}
+.mini{position:relative;width:100%;aspect-ratio:5/8}
+.rd-body{min-width:0}
+.rd-slot{display:inline-block;margin:0 0 6px;padding:2px 12px;border-radius:999px;background:var(--butter);color:#3A1D4D;border:2px solid var(--ink);font-weight:700;font-size:13px}
+.rd h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:24px;line-height:1.25}
+.rd h3 span{font-family:var(--f-body);font-size:15px;color:var(--muted);font-weight:600}
+.kw{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 6px}
+.kw span{font-size:12px;font-weight:600;padding:1px 10px;border-radius:999px;border:1.5px solid var(--line)}
+.rd p.txt{margin:6px 0 8px;max-width:60ch;font-size:16.5px}
+.stars{font-size:18px;letter-spacing:2px;color:var(--line)}
+.stars b{color:var(--butter);-webkit-text-stroke:1px var(--ink);font-weight:400}
+.stars em{font-style:normal;font-size:13px;color:var(--muted);letter-spacing:0;margin-left:6px}
+
+footer{margin-top:40px;text-align:center;font-size:13px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:999px;font-weight:600;transition:.3s;pointer-events:none;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.fade-in{animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:.001;transform:translateY(14px)}}
+
+@media (max-width:720px){
+  .deck{grid-template-columns:repeat(6,1fr);gap:10px 7px}
+  .sum{grid-template-columns:1fr}
+}
+@media (max-width:460px){
+  .rd{grid-template-columns:84px 1fr;gap:14px;padding:14px}
+  .rd h3{font-size:21px}
+  .deck-wrap{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 class="logo" aria-label="A ดวง"><span class="a">A</span><span class="d">ดวง<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z" fill="#FFC93C" stroke="#3A1D4D" stroke-width="1.2" stroke-linejoin="round"/></svg></span></h1>
+    <p class="tag">เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน ใน 1 นาที</p>
+    <div class="chips">
+      <span class="chip" id="dateChip">วันนี้</span>
+      <span class="chip" id="dayChip"><span class="sw"></span>สีประจำวัน</span>
+      <span class="chip" id="liveChip" hidden></span>
+    </div>
+  </header>
+
+  <ol class="steps" id="steps">
+    <li class="on" data-s="1"><b>1</b>ตั้งจิต</li>
+    <li data-s="2"><b>2</b>เลือกไพ่ 3 ใบ</li>
+    <li data-s="3"><b>3</b>เปิดไพ่ดูดวง</li>
+  </ol>
+
+  <div class="slots" id="slots"></div>
+
+  <div class="actions">
+    <button class="btn primary" id="revealBtn" disabled>เปิดไพ่เลย!</button>
+  </div>
+  <p class="hint" id="hint" aria-live="polite"></p>
+
+  <section class="deck-wrap" id="deckWrap">
+    <div class="deck-head">
+      <div>
+        <h2>ไพ่ยิปซี 22 ใบ</h2>
+        <p>คิดถึงเรื่องที่อยากรู้ แล้วจิ้มไพ่ใบที่ใจเรียก</p>
+      </div>
+      <button class="btn small mint" id="shuffleBtn">สับไพ่</button>
+    </div>
+    <div class="deck" id="deck"></div>
+  </section>
+
+  <section id="results" hidden>
+    <div class="sum" id="sum"></div>
+    <div class="reads" id="reads"></div>
+  </section>
+
+  <footer>A ดวง ดูเพื่อความสนุกและเป็นกำลังใจ โปรดใช้วิจารณญาณนะ · ดวงรีเซ็ตใหม่ทุกวันตอนเที่ยงคืน</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+const C={ink:'#3A1D4D',pink:'#FF7EB6',rose:'#FF5C8A',yel:'#FFD35C',mint:'#6EDDC0',sky:'#8EC9FF',lil:'#C6A8FF',peach:'#FFB38A',orange:'#FFA05A',white:'#FFFFFF',cheek:'#FF9EC4'};
+const S=`stroke="${C.ink}" stroke-width="2.5" stroke-linejoin="round"`;
+const ln=(d,w=2.5,c=C.ink)=>`<path d="${d}" stroke="${c}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+function face(x,y,s=1,o={}){
+  const e=o.sleepy
+    ?ln(`M${x-8*s} ${y}q${2*s} ${2*s} ${4*s} 0M${x+4*s} ${y}q${2*s} ${2*s} ${4*s} 0`,1.6*s)
+    :`<circle cx="${x-6*s}" cy="${y}" r="${2.2*s}" fill="${C.ink}"/><circle cx="${x+6*s}" cy="${y}" r="${2.2*s}" fill="${C.ink}"/><circle cx="${x-5.3*s}" cy="${y-.8*s}" r="${.7*s}" fill="#fff"/><circle cx="${x+6.7*s}" cy="${y-.8*s}" r="${.7*s}" fill="#fff"/>`;
+  const m=o.o?`<ellipse cx="${x}" cy="${y+5*s}" rx="${1.8*s}" ry="${2.2*s}" fill="${C.ink}"/>`
+    :o.grin?`<path d="M${x-4*s} ${y+3.5*s}Q${x} ${y+9*s} ${x+4*s} ${y+3.5*s}Z" fill="${C.ink}"/>`
+    :ln(`M${x-3*s} ${y+4*s}Q${x} ${y+7*s} ${x+3*s} ${y+4*s}`,1.6*s);
+  return e+m+`<ellipse cx="${x-10*s}" cy="${y+4*s}" rx="${2.8*s}" ry="${1.7*s}" fill="${C.cheek}" opacity=".85"/><ellipse cx="${x+10*s}" cy="${y+4*s}" rx="${2.8*s}" ry="${1.7*s}" fill="${C.cheek}" opacity=".85"/>`;
+}
+const sp=(x,y,r,f=C.yel)=>`<path d="M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z" fill="${f}" stroke="${C.ink}" stroke-width="1.2" stroke-linejoin="round"/>`;
+function star5(cx,cy,R,r,fill){const p=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r:R;p.push((cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1));}return `<polygon points="${p.join(' ')}" fill="${fill}" ${S}/>`;}
+const heart=(cx,cy,s,f)=>`<path d="M${cx} ${cy+14*s}C${cx-4*s} ${cy+10*s} ${cx-18*s} ${cy+2*s} ${cx-18*s} ${cy-6*s}C${cx-18*s} ${cy-14*s} ${cx-6*s} ${cy-16*s} ${cx} ${cy-8*s}C${cx+6*s} ${cy-16*s} ${cx+18*s} ${cy-14*s} ${cx+18*s} ${cy-6*s}C${cx+18*s} ${cy+2*s} ${cx+4*s} ${cy+10*s} ${cx} ${cy+14*s}Z" fill="${f}" ${S}/>`;
+const circ=(x,y,r,f,st=true)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}" ${st?S:''}/>`;
+
+const ART=[
+ // 0 Fool — backpack
+ ()=>`${ln('M38 31q0-13 12-13q12 0 12 13',3)}<rect x="28" y="30" width="44" height="50" rx="14" fill="${C.peach}" ${S}/>${ln('M29 42q21 8 42 0')}<rect x="38" y="63" width="24" height="12" rx="5" fill="${C.yel}" ${S}/>${face(50,51,.8)}${sp(18,28,6)}${sp(82,72,5,C.pink)}${sp(84,24,4,C.mint)}`,
+ // 1 Magician — wand
+ ()=>`${ln('M26 82L58 44',8)}${ln('M26 82L58 44',3.5,C.lil)}${star5(64,36,20,9,C.yel)}${face(64,37,.55)}${sp(22,30,7,C.pink)}${sp(84,68,6,C.mint)}${sp(40,18,4)}`,
+ // 2 High Priestess — crescent
+ ()=>`<path d="M53.9 22.3A30 30 0 1 0 77.6 63.8A24 24 0 1 1 53.9 22.3Z" fill="${C.lil}" ${S}/>${face(34,58,.6,{sleepy:1})}${sp(78,24,6)}${sp(84,80,4,C.pink)}${sp(20,22,4,C.mint)}`,
+ // 3 Empress — tulip
+ ()=>`${ln('M50 88V54',3.5)}<path d="M50 80q-18-2-20-18q16 2 20 18Z" fill="${C.mint}" ${S}/><path d="M50 74q18-2 20-18q-16 2-20 18Z" fill="${C.mint}" ${S}/><path d="M30 28Q33 58 50 58Q67 58 70 28L60 37L50 22L40 37Z" fill="${C.pink}" ${S}/>${face(50,44,.65)}${sp(18,20,5)}${sp(84,18,5,C.mint)}${sp(84,80,4)}`,
+ // 4 Emperor — crown
+ ()=>`<path d="M22 70L26 34L39 50L50 26L61 50L74 34L78 70Z" fill="${C.yel}" ${S}/><rect x="20" y="66" width="60" height="13" rx="5" fill="${C.peach}" ${S}/>${circ(26,33,4,C.pink)}${circ(50,25,4.5,C.mint)}${circ(74,33,4,C.pink)}${face(50,53,.7)}${sp(16,18,5,C.lil)}${sp(86,86,4)}`,
+ // 5 Hierophant — book
+ ()=>`<path d="M16 40V82Q34 77 50 83Q66 77 84 82V40" fill="${C.lil}" ${S}/><path d="M50 40Q36 32 20 36V76Q36 72 50 80Z" fill="#fff" ${S}/><path d="M50 40Q64 32 80 36V76Q64 72 50 80Z" fill="#fff" ${S}/>${ln('M57 50q10-3 17-2M57 58q10-3 17-2M57 66q10-3 17-2',2)}${face(35,56,.55)}${star5(50,20,10,4.5,C.yel)}${sp(84,18,4,C.pink)}${sp(16,22,4,C.mint)}`,
+ // 6 Lovers — two hearts
+ ()=>`${heart(38,48,1,C.pink)}${face(38,45,.55)}${heart(64,60,.85,C.rose)}${face(64,57,.48)}${sp(80,24,6)}${sp(20,80,5,C.mint)}${sp(62,18,3.5,C.lil)}`,
+ // 7 Chariot — car
+ ()=>`${ln('M4 54h8M2 62h10M6 70h6',2.5)}<path d="M28 49Q32 30 48 30H58Q70 30 74 49Z" fill="#fff" ${S}/>${ln('M51 31V49',2.5)}<rect x="14" y="48" width="72" height="22" rx="11" fill="${C.sky}" ${S}/>${circ(30,72,8,C.ink)}${circ(30,72,3,'#fff',false)}${circ(70,72,8,C.ink)}${circ(70,72,3,'#fff',false)}${face(50,56,.5)}${sp(82,20,6)}${sp(20,24,4,C.pink)}`,
+ // 8 Strength — lion
+ ()=>{let m='';for(let i=0;i<12;i++){const a=i*Math.PI/6;m+=circ((50+25*Math.cos(a)).toFixed(1),(52+25*Math.sin(a)).toFixed(1),10,C.orange);}return m+circ(50,52,24,C.orange,false)+circ(35,34,6,C.yel)+circ(65,34,6,C.yel)+circ(50,53,21,C.yel)+face(50,52,.8)+`<path d="M47 57h6l-3 3Z" fill="${C.ink}"/>`+sp(88,14,5,C.pink)+sp(12,88,4,C.mint);},
+ // 9 Hermit — lantern
+ ()=>`<circle cx="50" cy="54" r="36" fill="${C.yel}" opacity=".35"/>${ln('M40 25Q50 10 60 25',3)}<rect x="34" y="23" width="32" height="9" rx="4" fill="${C.lil}" ${S}/><rect x="31" y="31" width="38" height="43" rx="11" fill="${C.yel}" ${S}/><rect x="34" y="73" width="32" height="9" rx="4" fill="${C.lil}" ${S}/>${face(50,51,.75)}${sp(16,20,4,C.pink)}${sp(86,82,5,C.mint)}`,
+ // 10 Wheel of Fortune — gacha wheel
+ ()=>{const cols=[C.pink,C.yel,C.mint,C.sky];let s='';for(let i=0;i<8;i++){const a1=i*Math.PI/4-Math.PI/2,a2=a1+Math.PI/4;s+=`<path d="M50 54L${(50+30*Math.cos(a1)).toFixed(1)} ${(54+30*Math.sin(a1)).toFixed(1)}A30 30 0 0 1 ${(50+30*Math.cos(a2)).toFixed(1)} ${(54+30*Math.sin(a2)).toFixed(1)}Z" fill="${cols[i%4]}" ${S}/>`;}return s+circ(50,54,11,'#fff')+face(50,53,.42)+`<path d="M43 12H57L50 27Z" fill="${C.rose}" ${S}/>`+sp(14,20,5,C.lil)+sp(88,88,5);},
+ // 11 Justice — scales
+ ()=>`<rect x="47" y="28" width="6" height="50" rx="3" fill="${C.lil}" ${S}/><rect x="32" y="76" width="36" height="9" rx="4" fill="${C.lil}" ${S}/>${ln('M22 34L13 56M22 34L31 56M78 34L69 56M78 34L87 56',2)}<rect x="16" y="29" width="68" height="7" rx="3.5" fill="${C.yel}" ${S}/>${circ(50,25,5,C.yel)}<path d="M9 56H35Q22 70 9 56Z" fill="${C.pink}" ${S}/><path d="M65 56H91Q78 70 65 56Z" fill="${C.mint}" ${S}/>${circ(50,52,11,'#fff')}${face(50,51,.45)}${sp(20,14,4)}${sp(82,14,4,C.pink)}`,
+ // 12 Hanged Man — hourglass
+ ()=>`<path d="M32 24H68Q68 42 54 50Q68 58 68 76H32Q32 58 46 50Q32 42 32 24Z" fill="#E8F4FF" ${S}/><path d="M38 33H62Q59 41 50 46Q41 41 38 33Z" fill="${C.yel}"/><path d="M35 75Q39 60 50 58Q61 60 65 75Z" fill="${C.yel}"/>${ln('M50 47V58',1.5)}${face(50,67,.42,{sleepy:1})}<rect x="25" y="15" width="50" height="9" rx="4" fill="${C.lil}" ${S}/><rect x="25" y="76" width="50" height="9" rx="4" fill="${C.lil}" ${S}/><text x="76" y="44" font-family="Itim,sans-serif" font-size="11" fill="${C.ink}">z</text><text x="82" y="34" font-family="Itim,sans-serif" font-size="8" fill="${C.ink}">z</text>${sp(16,40,4,C.pink)}`,
+ // 13 Death — butterfly (transformation)
+ ()=>`<ellipse cx="33" cy="42" rx="19" ry="16" fill="${C.lil}" ${S} transform="rotate(-20 33 42)"/><ellipse cx="67" cy="42" rx="19" ry="16" fill="${C.lil}" ${S} transform="rotate(20 67 42)"/><ellipse cx="37" cy="66" rx="12" ry="11" fill="${C.pink}" ${S}/><ellipse cx="63" cy="66" rx="12" ry="11" fill="${C.pink}" ${S}/>${circ(28,40,4,'#fff',false)}${circ(72,40,4,'#fff',false)}${circ(36,67,3,'#fff',false)}${circ(64,67,3,'#fff',false)}<rect x="45" y="36" width="10" height="42" rx="5" fill="${C.ink}"/>${ln('M47 25Q42 15 36 14M53 25Q58 15 64 14',2.5)}${circ(36,14,2.5,C.yel,false)}${circ(64,14,2.5,C.yel,false)}${circ(50,32,9,C.yel)}${face(50,31,.38)}${sp(86,84,5)}${sp(14,86,4,C.mint)}`,
+ // 14 Temperance — two cups
+ ()=>`${ln('M38 44Q50 22 62 50',5,C.sky)}${circ(44,60,2.5,C.sky,false)}${circ(56,64,2,C.sky,false)}<g transform="rotate(-24 30 62)"><path d="M17 50H43L39 77H21Z" fill="${C.mint}" ${S}/>${face(30,61,.45)}</g><g transform="rotate(20 70 66)"><path d="M57 54H83L79 81H61Z" fill="${C.peach}" ${S}/>${face(70,65,.45)}</g>${sp(18,20,5)}${sp(84,20,4,C.pink)}`,
+ // 15 Devil — mischievous imp
+ ()=>`<path d="M28 34L23 12L41 27Z" fill="${C.rose}" ${S}/><path d="M72 34L77 12L59 27Z" fill="${C.rose}" ${S}/>${ln('M72 68Q90 70 86 86',3)}<path d="M82 84L92 82L88 92Z" fill="${C.rose}" ${S}/>${circ(50,52,26,'#FF9DBE')}${ln('M36 43L44 46M64 43L56 46',2.5)}${face(50,53,.9,{grin:1})}${sp(14,70,4,C.yel)}`,
+ // 16 Tower — tower & lightning
+ ()=>`<path d="M34 88V36L40 29L44 36L50 27L56 36L60 29L66 36V88Z" fill="${C.lil}" ${S}/><path d="M44 88V76Q50 69 56 76V88Z" fill="${C.ink}"/>${face(50,52,.7,{o:1})}<path d="M80 5L68 26H78L70 45L91 18H81L87 5Z" fill="${C.yel}" ${S}/>${sp(20,22,5,C.pink)}${sp(16,70,3.5,C.mint)}`,
+ // 17 Star
+ ()=>`${star5(50,53,36,17,C.yel)}${face(50,56,.75)}${sp(14,16,5,C.sky)}${sp(86,20,6,C.pink)}${sp(84,86,4,C.mint)}${sp(16,84,4,C.lil)}`,
+ // 18 Moon
+ ()=>`${circ(46,44,27,'#FFF1B8')}${circ(34,34,4,'#F2DE8C',false)}${circ(60,56,5,'#F2DE8C',false)}${face(46,46,.8,{sleepy:1})}<path d="M40 84Q33 84 33 78Q33 72 41 72Q43 64 53 65Q59 59 68 65Q78 63 80 73Q87 75 85 81Q83 85 77 84Z" fill="#fff" ${S}/>${sp(84,22,5)}${sp(16,18,4,C.lil)}${sp(86,50,3.5,C.pink)}`,
+ // 19 Sun
+ ()=>{let r='';for(let i=0;i<12;i++)r+=`<rect x="46" y="4" width="8" height="15" rx="4" fill="${C.peach}" ${S} transform="rotate(${i*30} 50 50)"/>`;return r+circ(50,50,26,C.yel)+face(50,49,.9,{grin:1});},
+ // 20 Judgement — megaphone
+ ()=>`<rect x="15" y="42" width="13" height="16" rx="4" fill="${C.lil}" ${S}/><path d="M36 58L33 74H44L45 60" fill="${C.lil}" ${S}/><path d="M26 43L62 25V75L26 57Z" fill="${C.pink}" ${S}/><ellipse cx="62" cy="50" rx="7" ry="25" fill="${C.rose}" ${S}/>${face(43,48,.55)}${ln('M76 38Q82 50 76 62M85 29Q95 50 85 71',3)}${sp(22,20,5)}${sp(84,88,4,C.mint)}`,
+ // 21 World — planet
+ ()=>`${circ(50,50,27,C.sky)}<path d="M31 38q7-9 15-3q4 7-4 11q-9 2-11-8Z" fill="${C.mint}"/><path d="M62 30q8-2 10 5q-5 4-10-1Z" fill="${C.mint}"/>${face(50,45,.7)}<ellipse cx="50" cy="63" rx="42" ry="9" fill="none" stroke="${C.ink}" stroke-width="8" transform="rotate(-8 50 63)"/><ellipse cx="50" cy="63" rx="42" ry="9" fill="none" stroke="${C.yel}" stroke-width="4" transform="rotate(-8 50 63)"/>${sp(14,16,5,C.pink)}${sp(86,16,4)}${sp(86,88,4,C.lil)}`
+];
+
+// [roman, th, en, nick, [kw], love, work, money, tip, score, luckyName, luckyHex, cardBg]
+const RAW=[
+ ['0','คนเขลา','The Fool','มือใหม่ใจกล้า',['เริ่มใหม่','ลุย','อิสระ'],'มีเกณฑ์เจอคนใหม่แบบไม่ทันตั้งตัว เปิดใจไว้ได้ แต่อย่าเพิ่งทุ่มหมดหน้าตักนะ','ไอเดียใหม่พุ่งปรี๊ด กล้าลองของใหม่ได้เลย แค่เช็กรายละเอียดก่อนกดส่งงาน','วันนี้อยากซื้อของตามอารมณ์ ใส่ตะกร้าไว้ก่อน รอหนึ่งคืนแล้วค่อยตัดสินใจ','ก้าวแรกไม่ต้องเพอร์เฟกต์ แค่เริ่มก็ชนะไปครึ่งทางแล้ว',4,'เหลืองมัสตาร์ด','#E8B930','#FFF6D6'],
+ ['I','นักมายากล','The Magician','สายเสกของ',['มั่นใจ','ความสามารถ','ลงมือทำ'],'เสน่ห์แรงมาก พูดอะไรก็น่าฟัง ถ้าแอบชอบใครอยู่ วันนี้ทักไปได้เลย','ของครบในมือแล้ว งานกลุ่มหรือพรีเซนต์วันนี้เล่นใหญ่ได้ ปังแน่นอน','หารายได้เสริมจากสกิลที่มีได้ ขายของออนไลน์หรือรับงานเล็กๆ ก็เวิร์ก','เชื่อในฝีมือตัวเอง แล้วลงมือเลย',5,'แดงเชอร์รี่','#E8334A','#FFE3E8'],
+ ['II','สตรีนักบวช','The High Priestess','สายซอฟต์รู้ทัน',['สัญชาตญาณ','ความลับ','สงบนิ่ง'],'มีบางเรื่องที่อีกฝ่ายยังไม่พูด ดูจากการกระทำมากกว่าคำพูดนะ','เหมาะกับการอ่าน ทบทวน วางแผนเงียบๆ ยังไม่ต้องประกาศให้ใครรู้','อย่าเพิ่งเชื่อโปรที่ดูดีเกินจริง อ่านเงื่อนไขตัวเล็กให้ครบก่อน','ความรู้สึกแรกของเรามักจะถูก ลองฟังมันดู',3,'ม่วงลาเวนเดอร์','#A98BE8','#EFE7FF'],
+ ['III','จักรพรรดินี','The Empress','เจ้าแม่ออร่า',['อุดมสมบูรณ์','ความรัก','สวยงาม'],'ความรักอบอุ่นฟูฟ่อง คนโสดออร่าเปล่งประกาย คนมีคู่ได้รับการเอาใจเต็มที่','งานสายครีเอทีฟ ออกแบบ ศิลปะ รุ่งมาก ผลงานสวยจนคนต้องชม','เงินไหลมาเรื่อยๆ ใช้ตังค์ดูแลตัวเองได้ แต่อย่าเพลินจนเกินงบ','ใจดีกับตัวเองบ้าง วันนี้ให้รางวัลตัวเองหน่อย',5,'ชมพูพีช','#FF8FA3','#FFE6EF'],
+ ['IV','จักรพรรดิ','The Emperor','บอสใหญ่คุมเกม',['มั่นคง','วินัย','ผู้นำ'],'อีกฝ่ายอยากได้ความชัดเจน พูดตรงๆ ว่าคิดยังไง ดีกว่าปล่อยให้งง','ได้เป็นหัวหน้าทีมหรือคนคุมงาน วางแผนเป็นขั้นตอนแล้วงานจะเดินฉลุย','ทำงบรายวันแล้วทำให้ได้ตามนั้น เงินเก็บจะเริ่มเป็นก้อน','มีวินัยวันนี้ สบายในวันหน้า',4,'แดงอิฐ','#C4453A','#FFEBDD'],
+ ['V','พระสังฆราช','The Hierophant','ครูใหญ่ใจดี',['คำแนะนำ','กฎกติกา','การเรียนรู้'],'ผู้ใหญ่หรือเพื่อนสนิทมีคำแนะนำดีๆ เรื่องหัวใจ ลองฟังเขาดู','ทำตามแบบแผนก่อน ถามครูหรือหัวหน้าให้เคลียร์ อย่าเดาเอง','เหมาะกับการออมแบบพื้นฐาน ฝากประจำหรือหยอดกระปุกก็ดีมาก','ถามก่อนไม่เสียหาย ดีกว่าเดาผิดแล้วต้องแก้',3,'น้ำตาลคาราเมล','#B87A45','#F3ECFF'],
+ ['VI','คู่รัก','The Lovers','หัวใจตรงกัน',['ความรัก','ทางเลือก','เข้าขา'],'วันแห่งความรัก! คนโสดมีลุ้นแมตช์ติด คนมีคู่หวานกันเป็นพิเศษ','งานคู่หรืองานกลุ่มเข้าขากันดี ถ้ามีทางเลือกสำคัญ เลือกตามใจที่แท้จริง','มีเกณฑ์ใช้เงินกับคนที่รัก ซื้อของขวัญได้ แต่ดูงบด้วยนะ','เลือกสิ่งที่ใจอยากได้จริงๆ ไม่ใช่สิ่งที่คนอื่นคาดหวัง',5,'ชมพูบานเย็น','#E83E8C','#FFE1EC'],
+ ['VII','รถศึก','The Chariot','ซิ่งสู่เป้าหมาย',['ชัยชนะ','ความเร็ว','มุ่งมั่น'],'ถ้าชอบใครต้องเดินหน้า มัวรอให้เขาเริ่มก่อนอาจช้าไป','งานที่ค้างเคลียร์จบได้ในวันเดียว แข่งขันหรือสอบมีลุ้นชนะ','เงินเข้าเร็วออกเร็ว ระวังค่าเดินทางหรือค่าเรียกรถบานปลาย','โฟกัสเป้าเดียว แล้วซิ่งไปให้สุด',4,'ฟ้าสดใส','#3FA0F0','#E1F0FF'],
+ ['VIII','พลัง','Strength','ใจสิงห์',['ความอดทน','ความกล้า','ใจเย็น'],'ความอ่อนโยนชนะทุกอย่าง ถ้างอนกันอยู่ วันนี้ง้อแบบใจเย็นๆ ได้ผลแน่','งานยากแค่ไหนก็ผ่านได้ถ้าไม่ถอดใจ คนรอบข้างเห็นความตั้งใจของเรา','ห้ามใจไม่ซื้อของที่ไม่จำเป็นได้ ถือว่าเก่งมาก','แข็งแกร่งแบบนุ่มนวล ไม่ต้องเสียงดังก็ชนะได้',4,'ส้มแสด','#F2862E','#FFEFD9'],
+ ['IX','ฤๅษี','The Hermit','โหมดเก็บตัว',['ทบทวน','เวลาส่วนตัว','ปัญญา'],'อยากมีเวลาส่วนตัว บอกอีกฝ่ายดีๆ ว่าขอพักใจหน่อย ไม่ได้เบื่อนะ','ทำงานคนเดียวได้งานดีกว่า ปิดแจ้งเตือนแล้วโฟกัสไปเลย','ไม่ใช่วันช้อป ลองเช็กรายจ่ายย้อนหลังดูว่าเงินหายไปไหน','ชาร์จแบตตัวเองก่อน แล้วค่อยกลับมาลุยใหม่',3,'เทาควันบุหรี่','#8C8A9B','#FFF7DA'],
+ ['X','กงล้อแห่งโชคชะตา','Wheel of Fortune','กาชาแห่งโชค',['โชคลาภ','จังหวะดี','เปลี่ยนแปลง'],'จังหวะชีวิตพาไปเจอคนที่ใช่แบบบังเอิญ แต่งตัวให้พร้อมไว้เลย','โอกาสดีๆ โผล่มาแบบไม่คาดคิด คว้าไว้ก่อนมันหมุนผ่านไป','โชคลาภมีแวว ลุ้นของรางวัลหรือได้เงินแบบไม่คาดฝัน','ชีวิตมีขึ้นมีลง วันนี้ขาขึ้น ใช้ให้คุ้ม',5,'เขียวมิ้นต์','#2FC4A0','#E3FBF3'],
+ ['XI','ความยุติธรรม','Justice','ตาชั่งใจแฟร์',['ยุติธรรม','สมดุล','ความจริง'],'ความสัมพันธ์ต้องให้และรับเท่าๆ กัน ถ้าเหนื่อยอยู่ฝ่ายเดียว คุยกันตรงๆ','สิ่งที่ทำไปได้ผลตอบแทนตามจริง เรื่องเอกสารหรือคะแนนเคลียร์ได้','หารค่าข้าวกับเพื่อนให้ชัด คืนเงินที่ยืมมาให้ครบ สบายใจกว่า','ตรงไปตรงมา แล้วทุกอย่างจะลงตัว',3,'เขียวมะกอก','#7FA046','#F0F7E4'],
+ ['XII','คนแขวน','The Hanged Man','พักก่อนนะ',['หยุดรอ','มุมมองใหม่','ปล่อยวาง'],'เรื่องหัวใจยังค้างๆ รอดูท่าทีก่อน อย่าเพิ่งเร่งเอาคำตอบ','งานติดขัดนิดหน่อย ลองมองจากอีกมุม คำตอบอาจง่ายกว่าที่คิด','เงินที่รออยู่อาจมาช้ากว่ากำหนด อย่าเพิ่งใช้ล่วงหน้า','บางทีการหยุด ก็คือการไปต่อที่ฉลาดที่สุด',2,'ฟ้าน้ำทะเล','#2E8BB8','#E5F2FF'],
+ ['XIII','ความตาย','Death','ผีเสื้อลอกคราบ',['จบเพื่อเริ่ม','เปลี่ยนแปลง','อัปเวล'],'อะไรที่ไม่เวิร์กถึงเวลาปล่อยไป ที่ว่างในใจจะเปิดรับสิ่งที่ดีกว่า','เปลี่ยนวิธีทำงานหรือเริ่มโปรเจกต์ใหม่ได้เลย ของเก่าที่ไปต่อไม่ได้ก็ปล่อยมัน','ยกเลิกแอปหรือบริการรายเดือนที่ไม่ได้ใช้ เงินจะเหลือมากขึ้น','ไพ่ใบนี้ไม่ได้น่ากลัว แค่บอกว่าเรากำลังจะอัปเวล',3,'ดำด้าน','#3A3340','#F5EDFF'],
+ ['XIV','ความพอดี','Temperance','ผสมกำลังดี',['สมดุล','ความพอดี','ใจเย็น'],'ค่อยเป็นค่อยไปดีที่สุด ความรักที่ละมุนกำลังก่อตัวอยู่','แบ่งเวลาเรียนกับเล่นให้บาลานซ์ ทำทีละนิดแต่สม่ำเสมอ','ใช้บ้างเก็บบ้าง แบ่งเงินเป็นช่องๆ แล้วชีวิตจะง่ายขึ้น','ไม่ต้องสุดทาง แค่พอดีก็สวยแล้ว',4,'ฟ้าพาสเทล','#8EC9FF','#E6F8F2'],
+ ['XV','ปีศาจ','The Devil','ตัวแสบยั่วใจ',['สิ่งยั่วใจ','ติดหนึบ','พันธนาการ'],'ระวังความสัมพันธ์ท็อกซิก หรือใจอ่อนให้คนที่ไม่ชัดเจนกับเรา','เล่นมือถือเพลินจนงานไม่เดิน ลองวางโทรศัพท์ไว้ไกลตัวสักชั่วโมง','ของลดราคายั่วใจมาก! ระวังผ่อนหรือจ่ายทีหลังจนตัวเองเหนื่อย','รู้ทันสิ่งที่ดึงเรา แล้วเราจะเป็นฝ่ายคุมเกม',2,'แดงเลือดนก','#B0203A','#FFE3E6'],
+ ['XVI','หอคอย','The Tower','ตึกสะเทือน',['เรื่องไม่คาดฝัน','พังเพื่อสร้าง','ตื่นรู้'],'อาจมีเรื่องเซอร์ไพรส์ที่ไม่ค่อยน่ารัก ตั้งสติ อย่าตัดสินใจตอนโกรธ','แผนที่วางไว้อาจต้องเปลี่ยนกะทันหัน เซฟงานบ่อยๆ และมีแผนสำรองไว้','ระวังค่าใช้จ่ายฉุกเฉิน ของพังหรือเสียเงินแบบไม่ทันตั้งตัว','พังแล้วสร้างใหม่ได้เสมอ และมักจะดีกว่าเดิม',1,'ขาวนวล','#F4EFE4','#EDE6FF'],
+ ['XVII','ดวงดาว','The Star','ดาวแห่งความหวัง',['ความหวัง','แรงบันดาลใจ','เยียวยา'],'หัวใจที่เคยเจ็บกำลังฟื้นตัว มีคนใหม่ที่ทำให้ยิ้มได้อีกครั้ง','แรงบันดาลใจมาเต็ม เหมาะตั้งเป้าหมายใหม่หรือเริ่มทำตามฝัน','การเงินค่อยๆ ดีขึ้น ตั้งเป้าเก็บเงินซื้อของที่ฝันไว้ได้เลย','ความหวังไม่เคยหายไป แค่รอให้เรามองขึ้นไปเห็น',5,'ฟ้าคราม','#3B6FD8','#E8EEFF'],
+ ['XVIII','ดวงจันทร์','The Moon','จันทร์ขี้ระแวง',['คิดมาก','ไม่ชัดเจน','จินตนาการ'],'อย่าคิดไปเองมาก ถ้าสงสัยให้ถามตรงๆ ดีกว่านั่งส่องสตอรี่ทั้งคืน','ข้อมูลยังไม่ครบ เช็กโจทย์หรือบรีฟอีกรอบก่อนลงมือทำ','ระวังมิจฉาชีพ ลิงก์แปลกๆ ห้ามกด ห้ามโอนเงินให้คนที่ไม่รู้จัก','ความกังวลมักใหญ่กว่าความจริง หายใจลึกๆ',2,'เงินยวง','#B8BCCB','#E9E7FF'],
+ ['XIX','ดวงอาทิตย์','The Sun','สดใสเกินต้าน',['ความสุข','สำเร็จ','พลังบวก'],'ความรักสดใสเหมือนแดดยามเช้า เปิดใจ มีแต่เรื่องให้ยิ้ม','ผลงานโดดเด่น ได้คำชมหรือคะแนนดี ทุกอย่างผ่านฉลุย','การเงินเฮงๆ มีเงินเข้าแบบชื่นใจ เลี้ยงขนมเพื่อนได้ด้วย','วันนี้เป็นวันของเธอ ยิ้มกว้างๆ เลย',5,'ส้มแมนดาริน','#FF9A2E','#FFF1CC'],
+ ['XX','การพิพากษา','Judgement','เสียงเรียกจากใจ',['ตื่นรู้','โอกาสครั้งที่สอง','ตัดสินใจ'],'คนเก่าอาจกลับมาทัก คิดดีๆ ว่าอยากเปิดประตูบานนี้อีกไหม','ผลสอบหรือผลงานออกมาน่าพอใจ ได้แก้ตัวในสิ่งที่เคยพลาด','ได้เงินคืนหรือได้ของที่เคยหายกลับมา เช็กยอดดูดีๆ','ฟังเสียงข้างในให้ดี มันกำลังบอกทางให้',4,'ม่วงองุ่น','#7B3FB8','#FFE8F1'],
+ ['XXI','โลก','The World','จบครบเป็นวงกลม',['สำเร็จ','ครบถ้วน','การเดินทาง'],'ความรักลงตัว รู้สึกครบในตัวเอง ใครเข้ามาก็เป็นโบนัส','ปิดจ็อบได้สวยงาม งานใหญ่สำเร็จ อาจมีโอกาสได้ไปไกลกว่าที่คิด','เป้าหมายการเงินสำเร็จ เก็บครบแล้ว! ไปเที่ยวหรือให้รางวัลตัวเองได้','ภูมิใจในตัวเองหน่อย เธอมาไกลมากแล้ว',5,'เขียวมรกต','#1E9E73','#E0F4FF']
+];
+const CARDS=RAW.map((r,i)=>({id:i,roman:r[0],th:r[1],en:r[2],nick:r[3],kw:r[4],love:r[5],work:r[6],money:r[7],tip:r[8],score:r[9],luckName:r[10],luckHex:r[11],bg:r[12]}));
+const SLOTS=[{key:'love',label:'ความรัก',sub:'หัวใจ & ความสัมพันธ์'},{key:'work',label:'การงาน/เรียน',sub:'งาน สอบ โปรเจกต์'},{key:'money',label:'การเงิน',sub:'เงินเข้า เงินออก'}];
+const DAYS=[['อาทิตย์','แดง','#FF5A5A'],['จันทร์','เหลือง','#FFD35C'],['อังคาร','ชมพู','#FF7EB6'],['พุธ','เขียว','#4CC98A'],['พฤหัสบดี','ส้ม','#FF9F43'],['ศุกร์','ฟ้า','#5AB4FF'],['เสาร์','ม่วง','#A879FF']];
+
+const $=s=>document.querySelector(s);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const now=new Date();
+const pad=n=>String(n).padStart(2,'0');
+const dateKey=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+const thDate=now.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'});
+const day=DAYS[now.getDay()];
+$('#dateChip').textContent=`ดวงวัน${day[0]}ที่ ${thDate}`;
+$('#dayChip').innerHTML=`<span class="sw" style="background:${day[2]}"></span>สีประจำวัน: ${day[1]}`;
+
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const KEY='aduang-'+dateKey;
+
+// ---- Supabase (optional: the page works fully without it) ----
+const cfg=window.ADUANG_CONFIG||{};
+let db=null;
+try{
+  if(cfg.supabaseUrl&&cfg.supabaseAnonKey&&window.supabase&&window.supabase.createClient){
+    db=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey,{auth:{persistSession:false}});
+  }
+}catch(e){db=null;}
+function deviceId(){
+  let id=store.get('aduang-device');
+  if(!id){id=(crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return (c==='x'?r:(r&3|8)).toString(16);}));store.set('aduang-device',id);}
+  return id;
+}
+let stats=null;
+async function loadStats(){
+  if(!db)return;
+  try{
+    const {data,error}=await db.rpc('today_stats',{p_date:dateKey});
+    if(error||!data)return;
+    stats=data;
+    const chip=$('#liveChip');
+    if(stats.people>0){chip.textContent=`วันนี้เปิดไพ่แล้ว ${Number(stats.people).toLocaleString('th-TH')} คน`;chip.hidden=false;}
+    paintHot();
+  }catch(e){}
+}
+function paintHot(){
+  const el=$('#hotLine');
+  if(!el||!stats||stats.top_card==null||!CARDS[stats.top_card])return;
+  const c=CARDS[stats.top_card];
+  el.textContent=`ไพ่ฮิตของวันนี้: ${c.th} (${c.nick})`;
+  el.hidden=false;
+}
+async function saveReading(ids,total){
+  if(!db)return;
+  try{
+    const {error}=await db.from('readings').insert({device_id:deviceId(),reading_date:dateKey,love_card:ids[0],work_card:ids[1],money_card:ids[2],total_score:total});
+    if(!error)loadStats();
+  }catch(e){}
+}
+
+function frontHTML(c){return `<div class="cf" style="--cbg:${c.bg}"><div class="cf-num">${c.roman}</div><svg viewBox="0 0 100 100" aria-hidden="true">${ART[c.id]()}</svg><div class="cf-name">${c.th}</div><div class="cf-en">${c.en}</div></div>`;}
+function c3dHTML(c){return `<div class="c3d"><div class="inner"><div class="face back back-art"></div><div class="face front" role="img" aria-label="${c.th} (${c.en})">${frontHTML(c)}</div></div></div>`;}
+
+let order=[],picked=[],revealed=false;
+const shuffleArr=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+function buildSlots(){
+  $('#slots').innerHTML=SLOTS.map((s,i)=>`<div class="slot" data-i="${i}"><div class="slot-label">${s.label}<small>${s.sub}</small></div><div class="slot-box"><span class="n">${i+1}</span></div></div>`).join('');
+}
+function buildDeck(){
+  order=shuffleArr(CARDS.map(c=>c.id));
+  $('#deck').innerHTML=order.map((_,i)=>`<button class="dc back-art" data-p="${i}" style="--r:${(Math.random()*8-4).toFixed(1)}deg" aria-label="ไพ่คว่ำใบที่ ${i+1}"></button>`).join('');
+}
+function updateUI(){
+  const n=picked.length;
+  document.querySelectorAll('.slot').forEach((s,i)=>s.classList.toggle('next',i===n&&!revealed));
+  $('#deck').classList.toggle('full',n>=3);
+  $('#revealBtn').disabled=n<3||revealed;
+  $('#shuffleBtn').disabled=n>0;
+  const hints=['ตั้งจิตให้ดี แล้วจิ้มเลือกไพ่ใบแรก สำหรับเรื่องความรัก','ใบที่ 2 สำหรับการงานและการเรียน','ใบสุดท้าย สำหรับเรื่องการเงิน','ครบ 3 ใบแล้ว! กดปุ่ม "เปิดไพ่เลย!" ได้เลย'];
+  $('#hint').textContent=revealed?'':hints[n];
+  const step=revealed?3:(n>0?2:1);
+  document.querySelectorAll('#steps li').forEach(li=>li.classList.toggle('on',+li.dataset.s<=step));
+}
+
+function fly(from,to,done){
+  if(reduce||!from.animate){done();return;}
+  const a=from.getBoundingClientRect(),b=to.getBoundingClientRect();
+  const f=document.createElement('div');f.className='fly back-art';
+  Object.assign(f.style,{left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px'});
+  document.body.appendChild(f);
+  const dx=b.left-a.left,dy=b.top-a.top,sx=b.width/a.width,sy=b.height/a.height;
+  const an=f.animate([{transform:'translate(0,0) scale(1) rotate(0deg)'},{transform:`translate(${dx/2}px,${dy/2-50}px) scale(${(1+sx)/2}) rotate(-12deg)`,offset:.55},{transform:`translate(${dx}px,${dy}px) scale(${sx},${sy}) rotate(0deg)`}],{duration:620,easing:'cubic-bezier(.5,0,.3,1)'});
+  an.onfinish=()=>{f.remove();done();};
+}
+
+$('#deck').addEventListener('click',e=>{
+  const b=e.target.closest('.dc');if(!b||picked.length>=3||revealed||b.classList.contains('taken'))return;
+  const idx=picked.length,card=CARDS[order[+b.dataset.p]];
+  picked.push(card.id);b.classList.add('taken');updateUI();
+  const slot=document.querySelectorAll('.slot')[idx],box=slot.querySelector('.slot-box');
+  fly(b,box,()=>{box.innerHTML=c3dHTML(card);slot.classList.add('filled');});
+});
+
+$('#shuffleBtn').addEventListener('click',()=>{
+  if(picked.length)return;
+  const btns=[...document.querySelectorAll('.dc')];
+  const wrap=$('#deck').getBoundingClientRect(),cx=wrap.left+wrap.width/2,cy=wrap.top+wrap.height/2;
+  order=shuffleArr(order);
+  btns.forEach((b,i)=>{
+    const r=b.getBoundingClientRect(),dx=cx-(r.left+r.width/2),dy=cy-(r.top+r.height/2);
+    const rot=(Math.random()*8-4).toFixed(1)+'deg';
+    if(!reduce&&b.animate)b.animate([{transform:`rotate(${b.style.getPropertyValue('--r')})`},{transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*60-30}deg)`,offset:.45},{transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*60-30}deg)`,offset:.6},{transform:`rotate(${rot})`}],{duration:900,delay:i*12,easing:'cubic-bezier(.5,0,.3,1)'});
+    b.style.setProperty('--r',rot);
+  });
+  toast('สับไพ่แล้ว ตั้งจิตแล้วเลือกได้เลย');
+});
+
+$('#revealBtn').addEventListener('click',()=>{
+  if(picked.length<3||revealed)return;
+  revealed=true;updateUI();
+  const cards=[...document.querySelectorAll('.slot .c3d')];
+  const gap=reduce?0:480;
+  cards.forEach((c,i)=>setTimeout(()=>c.classList.add('flipped'),i*gap));
+  store.set(KEY,picked);
+  saveReading(picked,picked.reduce((s,id)=>s+CARDS[id].score,0));
+  setTimeout(()=>{showResults(true);},cards.length*gap+(reduce?0:400));
+});
+
+function hash(str){let h=2166136261;for(const ch of str){h^=ch.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+function level(t){
+  if(t>=13)return ['ดวงปังสุดๆ','วันนี้พลังบวกล้นจนต้องแบ่งให้เพื่อน อะไรที่ตั้งใจไว้ ลุยได้เลย'];
+  if(t>=10)return ['ดวงดีมาก','ภาพรวมสดใส มีเรื่องให้ยิ้มหลายเรื่อง ระวังนิดหน่อยก็พอ'];
+  if(t>=7)return ['ดวงกลางๆ แต่รอด','มีทั้งเรื่องดีและเรื่องให้ระวัง ใช้สติ แล้ววันนี้จะผ่านไปได้สวย'];
+  return ['ดวงต้องระวัง','วันนี้อาจมีเรื่องให้หัวร้อนบ้าง ไม่ต้องกลัว ไพ่แค่เตือนให้เตรียมตัว'];
+}
+function starRow(n){return '<b>'+'★'.repeat(n)+'</b>'+'★'.repeat(5-n);}
+
+function showResults(scroll){
+  const cs=picked.map(id=>CARDS[id]);
+  const total=cs.reduce((s,c)=>s+c.score,0);
+  const [lvl,lvlTxt]=level(total);
+  const best=cs.slice().sort((a,b)=>b.score-a.score)[0];
+  const num=pad(hash(dateKey+picked.join('-'))%100);
+  $('#sum').innerHTML=`
+   <div>
+     <p class="eyebrow">ดวงรวมวันนี้</p>
+     <h2>${lvl}</h2>
+     <div class="meter"><i style="width:0%"></i></div>
+     <div class="meter-txt">พลังดวง ${total} จาก 15</div>
+     <p>${lvlTxt}</p>
+     <p class="tip">"${best.tip}"</p>
+     <p class="hot" id="hotLine" hidden></p>
+   </div>
+   <div class="lucky">
+     <div class="lk wide"><p class="eyebrow">สีมงคลวันนี้</p><strong><span class="sw" style="width:22px;height:22px;background:${best.luckHex}"></span>${best.luckName}</strong></div>
+     <div class="lk"><p class="eyebrow">เลขนำโชค</p><strong class="big">${num}</strong></div>
+     <div class="lk"><p class="eyebrow">ไพ่ประจำวัน</p><strong>${best.nick}</strong></div>
+   </div>
+   <div class="sum-actions">
+     <button class="btn primary" id="copyBtn">คัดลอกคำทำนาย</button>
+     <button class="btn" id="againBtn">เปิดไพ่ใหม่</button>
+   </div>`;
+  $('#reads').innerHTML=cs.map((c,i)=>`
+   <article class="rd">
+     <div class="mini">${frontHTML(c)}</div>
+     <div class="rd-body">
+       <p class="rd-slot">${SLOTS[i].label}</p>
+       <h3>${c.th} <span>· ${c.nick}</span></h3>
+       <div class="kw">${c.kw.map(k=>`<span>${k}</span>`).join('')}</div>
+       <p class="txt">${c[SLOTS[i].key]}</p>
+       <div class="stars" aria-label="ระดับดวง ${c.score} จาก 5">${starRow(c.score)}<em>${c.score}/5</em></div>
+     </div>
+   </article>`).join('');
+  $('#deckWrap').hidden=true;
+  const res=$('#results');res.hidden=false;res.classList.remove('fade-in');void res.offsetWidth;res.classList.add('fade-in');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{const m=$('.meter i');if(m)m.style.width=(total/15*100)+'%';}));
+  if(scroll)res.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  paintHot();
+  $('#copyBtn').onclick=()=>copyReading(cs,lvl,num,best);
+  $('#againBtn').onclick=reset;
+}
+
+function copyReading(cs,lvl,num,best){
+  const txt=`A ดวง · ${thDate}\nดวงรวม: ${lvl}\n`+cs.map((c,i)=>`${SLOTS[i].label}: ${c.th} (${c.en}) – ${c[SLOTS[i].key]}`).join('\n')+`\nสีมงคล: ${best.luckName} · เลขนำโชค: ${num}\n"${best.tip}"`;
+  const fallback=()=>{const t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}t.remove();toast(ok?'คัดลอกแล้ว ส่งให้เพื่อนได้เลย':'คัดลอกไม่ได้ ลองกดค้างที่ข้อความแทนนะ');};
+  try{navigator.clipboard.writeText(txt).then(()=>toast('คัดลอกแล้ว ส่งให้เพื่อนได้เลย'),fallback);}catch(e){fallback();}
+}
+
+function reset(){
+  store.del(KEY);picked=[];revealed=false;
+  buildSlots();buildDeck();
+  $('#results').hidden=true;$('#deckWrap').hidden=false;
+  updateUI();
+  window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+}
+
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// boot
+buildSlots();buildDeck();
+const saved=store.get(KEY);
+if(Array.isArray(saved)&&saved.length===3&&saved.every(n=>Number.isInteger(n)&&n>=0&&n<22)){
+  picked=saved;revealed=true;
+  document.querySelectorAll('.slot').forEach((s,i)=>{const box=s.querySelector('.slot-box');box.innerHTML=c3dHTML(CARDS[picked[i]]);box.querySelector('.c3d').classList.add('flipped','instant');s.classList.add('filled');});
+  showResults(false);
+}
+updateUI();
+loadStats();
+})();
+</script>
+
+</body>
+</html>
