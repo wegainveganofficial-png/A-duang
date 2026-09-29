@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="A ดวง เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน">
-<meta property="og:title" content="A ดวง">
+<meta name="description" content="The Secret มู เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน">
+<meta property="og:title" content="The Secret มู">
 <meta property="og:description" content="เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน ใน 1 นาที">
-<title>A ดวง</title>
+<title>The Secret มู</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap">
@@ -39,10 +39,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* header */
 .top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
-.logo{margin:0;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:400;font-size:clamp(56px,13vw,96px);line-height:1;letter-spacing:.01em}
-.logo .a{display:grid;place-items:center;width:1.05em;height:1.05em;border-radius:38% 62% 55% 45%/50% 42% 58% 50%;background:var(--pink);color:#fff;border:3px solid var(--ink);box-shadow:4px 5px 0 var(--shadow);transform:rotate(-8deg);font-size:.8em}
-.logo .d{position:relative}
-.logo .d svg{position:absolute;right:-.42em;top:-.12em;width:.42em;height:.42em}
+.logo{margin:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.08em .22em;font-family:var(--f-display);font-weight:400;font-size:clamp(46px,11vw,84px);line-height:1.05;letter-spacing:.01em}
+.logo .a{position:relative;display:grid;place-items:center;width:1.3em;height:1.3em;padding-bottom:.12em;border-radius:38% 62% 55% 45%/50% 42% 58% 50%;background:var(--pink);color:#fff;border:3px solid var(--ink);box-shadow:4px 5px 0 var(--shadow);transform:rotate(-8deg);font-size:.95em}
+.logo .d{white-space:nowrap}
+.logo .a svg{position:absolute;right:-.3em;top:-.3em;width:.45em;height:.45em;transform:rotate(8deg)}
 .tag{margin:0;font-size:clamp(16px,3.6vw,19px);font-weight:600;max-width:32ch;text-wrap:balance}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border-radius:999px;background:var(--surface);border:2px solid var(--ink);font-size:14px;font-weight:600}
@@ -167,7 +167,7 @@ footer{margin-top:40px;text-align:center;font-size:13px;color:var(--muted)}
 <body>
 <div class="wrap">
   <header class="top">
-    <h1 class="logo" aria-label="A ดวง"><span class="a">A</span><span class="d">ดวง<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z" fill="#FFC93C" stroke="#3A1D4D" stroke-width="1.2" stroke-linejoin="round"/></svg></span></h1>
+    <h1 class="logo" aria-label="The Secret มู"><span class="d">The Secret</span><span class="a">มู<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z" fill="#FFC93C" stroke="#3A1D4D" stroke-width="1.2" stroke-linejoin="round"/></svg></span></h1>
     <p class="tag">เปิดไพ่ยิปซีรายวัน 3 ใบ เช็กดวงความรัก การงาน การเงิน ใน 1 นาที</p>
     <div class="chips">
       <span class="chip" id="dateChip">วันนี้</span>
@@ -205,7 +205,7 @@ footer{margin-top:40px;text-align:center;font-size:13px;color:var(--muted)}
     <div class="reads" id="reads"></div>
   </section>
 
-  <footer>A ดวง ดูเพื่อความสนุกและเป็นกำลังใจ โปรดใช้วิจารณญาณนะ · ดวงรีเซ็ตใหม่ทุกวันตอนเที่ยงคืน</footer>
+  <footer>The Secret มู ดูเพื่อความสนุกและเป็นกำลังใจ โปรดใช้วิจารณญาณนะ · ดวงรีเซ็ตใหม่ทุกวันตอนเที่ยงคืน</footer>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
@@ -483,7 +483,7 @@ function showResults(scroll){
 }
 
 function copyReading(cs,lvl,num,best){
-  const txt=`A ดวง · ${thDate}\nดวงรวม: ${lvl}\n`+cs.map((c,i)=>`${SLOTS[i].label}: ${c.th} (${c.en}) – ${c[SLOTS[i].key]}`).join('\n')+`\nสีมงคล: ${best.luckName} · เลขนำโชค: ${num}\n"${best.tip}"`;
+  const txt=`The Secret มู · ${thDate}\nดวงรวม: ${lvl}\n`+cs.map((c,i)=>`${SLOTS[i].label}: ${c.th} (${c.en}) – ${c[SLOTS[i].key]}`).join('\n')+`\nสีมงคล: ${best.luckName} · เลขนำโชค: ${num}\n"${best.tip}"`;
   const fallback=()=>{const t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}t.remove();toast(ok?'คัดลอกแล้ว ส่งให้เพื่อนได้เลย':'คัดลอกไม่ได้ ลองกดค้างที่ข้อความแทนนะ');};
   try{navigator.clipboard.writeText(txt).then(()=>toast('คัดลอกแล้ว ส่งให้เพื่อนได้เลย'),fallback);}catch(e){fallback();}
 }

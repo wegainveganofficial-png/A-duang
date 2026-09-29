@@ -1,4 +1,4 @@
--- A ดวง: ตารางเก็บผลเปิดไพ่ + ฟังก์ชันสถิติรายวัน
+-- The Secret มู: ตารางเก็บผลเปิดไพ่ + ฟังก์ชันสถิติรายวัน
 -- ติดตั้งแล้วในโปรเจกต์ orldpdisplmplxrrqaan (migration: create_readings_and_today_stats)
 -- ถ้าจะสร้างโปรเจกต์ใหม่: Supabase Dashboard > SQL Editor > วางทั้งไฟล์แล้วกด Run
 
